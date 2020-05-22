@@ -4,7 +4,7 @@
     ],
     "fileSizeLimit": 52428800,
     "fileNameLength": 8,
-    "serverUrl": "http://localhost:3854",
+    "serverUrl": "https://i.sazz.fail",
     "fileExtensionCheck": {
         "enabled": false,
         "extensionsAllowed": [
