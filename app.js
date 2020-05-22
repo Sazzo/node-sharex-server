@@ -8,7 +8,7 @@ const version = require('./package.json').version;
 const keys = config.keys;
 
 // Get the port
-const PORT = process.env.SUS_PORT || 3854;
+const PORT = process.env.PORT || 3854;
 
 // Logger
 var logger = require('./logger.js');
@@ -69,7 +69,7 @@ app.post('/upload', function(req, res) {
         // Check if key is registered
         var key = req.body.key;
         var shortKey = key.substr(0, 3) + '...';
-        if(keys.indexOf(key) == -1) {
+        if(!key === process.env.KEY) {
             logger.auth('Failed authentication with key ' + key);
             res.setHeader('Content-Type', 'application/json');
             res.status(401).send(JSON.stringify({
@@ -154,7 +154,7 @@ app.get('/delete', function(req, res) {
         // Check if key is registered
         var key = req.query.key;
         var shortKey = key.substr(0, 3) + '...';
-        if(keys.indexOf(key) == -1) {
+        if(!key === process.env.KEY) {
             logger.auth('Failed authentication with key ' + key);
             res.setHeader('Content-Type', 'application/json');
             res.status(401).send(JSON.stringify({
